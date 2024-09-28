@@ -36,3 +36,4 @@ if __name__=="__main__":
         string = sys.argv[1]
         process_string(string)
 
+# lo mas eficiente sería no comprobar todos sino soo los numeros. expresiones regulares

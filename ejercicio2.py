@@ -8,42 +8,47 @@ Por ejemplo: "210.010.090.180", devolvería "210.10.90.180"
 
 import sys
 
-def trim_ip(string_ip):
-    ip_parts = string_ip.split('.')
-    ip_parts = [part.lstrip('0') for part in ip_parts]
-    ip_output = '.'.join(ip_parts)
-    return ip_output
+def remove_zeros(string_ip:str):
+    octets = string_ip.split('.')
+    int_octets = []
+    for octet in octets:
+        try:
+            octet=int(octet)
+            int_octets.append(octet)
+        except Exception as e:
+            print(e)
+            return False
+
+    ip_address = '.'.join(map(str, int_octets))
+    return ip_address
 
 def validate_ip(ip):
-    subnumbers_list = ip.split('.')
-    if len(subnumbers_list)!=4:
+    octets_list = ip.split('.')
+    if len(octets_list)!=4:
         return False
-    for subnumber in subnumbers_list:
-        if len(subnumber)>3:
+    for octet in octets_list:
+        if len(octet)>3:
             return False
         try:
-            subnumber=int(subnumber)
-            if not 0 <= subnumber <= 255:
+            octet=int(octet)
+            if not 0 <= octet <= 255:
                 return False
         except ValueError:
             return False
     return True
 
 # lista_ips = ['253.100.50.25', '192.168.1', '192.0168.1.255', '192.168.1.1.5', '192.168.-1.50', '192.168.abc.10', '192.168.1.10.', '192..1.10', '192.168.1.10 25', '300.300.300.300']
-#
-#
-# for i in lista_ips:
-#     i = trim_ip(i)
-#     v = validate_ip(i)
-#     print(v)
+
+
 
 if __name__=="__main__":
     if len(sys.argv) != 2:
         print("Error")
     else:
         ip = sys.argv[1]
-        trimmed_ip = trim_ip(ip)
-        if validate_ip(trimmed_ip):
-            print("Valid IP", trimmed_ip)
+        ip_modified = remove_zeros(ip)
+        if validate_ip(ip_modified):
+            line = f"IP inicial: {ip}, IP arreglada: {ip_modified}, IP válida"
         else:
-            print("Noy valid ip: ", trimmed_ip)
+            line = f"IP inicial: {ip}, IP arreglada: {ip_modified}  IP no válida"
+        print(line)
