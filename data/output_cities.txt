@@ -1,0 +1,4 @@
+Frogtek,0.0,0,0, 0, None, None
+Huesca,18.92,6.69,-0.4087, 42.1362, (datetime.datetime(2024, 9, 27, 7, 54, 31),), (datetime.datetime(2024, 9, 27, 19, 50, 27),)
+Jaca,16.66,2.56,-0.5499, 42.569, (datetime.datetime(2024, 9, 27, 7, 55, 9),), (datetime.datetime(2024, 9, 27, 19, 50, 57),)
+Guadalajara,19.06,3.76,-3.1667, 40.6333, (datetime.datetime(2024, 9, 27, 8, 5, 19),), (datetime.datetime(2024, 9, 27, 20, 1, 42),)
