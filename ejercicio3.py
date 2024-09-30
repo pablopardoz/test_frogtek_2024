@@ -22,7 +22,6 @@ NOEXISTE,0,0,0,0
 import sys
 from dotenv import load_dotenv
 import os
-from datetime import datetime
 from City import City
 from utils import write_cities_to_file, read_cities_from_source, get_city_data, get_sun_data
 

@@ -11,7 +11,7 @@ Por ejemplo: "Frogtek desarrolla un software para la gestión de tiendas de barr
 
 """
 
-def convert_number(input):
+def convert_number(input: str) -> int:
     input = input.replace(",", ".").rstrip('.')
     try:
         number= float(input)
@@ -21,19 +21,18 @@ def convert_number(input):
 
 #string = "Frogtek se fundó en 2010, y ahora tiene 40 empleados y hay 20,1. ayer 23.1"
 
-def process_string(string):
+def process_string(string: str):
     splitted_string = string.split(" ")
     list_numbers = [convert_number(word) for word in splitted_string]
     total_number = sum(list_numbers)
     print(string)
-    print(total_number)
+    return total_number
 
 
 if __name__=="__main__":
     if len(sys.argv) != 2:
-        print("Error")
+        print("Error en los argumentos")
     else:
         string = sys.argv[1]
-        process_string(string)
+        total_number = process_string(string)
 
-# lo mas eficiente sería no comprobar todos sino soo los numeros. expresiones regulares

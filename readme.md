@@ -15,6 +15,8 @@ La manera más simple y  directa que he visto para afrontarlo ha sido:
 - Para cada elemento de la lista resultante, aplicarle la función de convertir palabra. Esta función símplemente convierte lo que entra a número, y devuelve un 0 si no es número.
 También controla un posible error de números con decimales, permitiendo que pueda leer tanto números con `.` decimal como con `,`
 
+Como observación añadir que seguramente fuera más escalable no comprobar toda la cadena de texto, sino buscar los números con expresiones regulares.
+
 
 ## Ejercicio 2
 ```
@@ -63,6 +65,54 @@ Notas:
 - Se ha decidido guardar todos los datos el final para evitar abrir y cerrar el archivo muchas veces, pero este método no sería muy escalable pues guarda en una variable todo el contenido para luego imprimirlo. Lo ideal habría sido guardar linea a linea, y para mi gusto, habría dejado el archivo de entrada como estaba, y habría guardado todo en un archivo diferente `output.txt`. Esto permite tener constancia de lo que entra y de lo que sale en el caso de tener que debugar.
 
 ## Tests
+Se ha creado una pequeña batería de tests unitarios con la librería de unittest. Hasta el momento todos pasan.
 
 
-##Instalación
+## Instalación
+`git clone https://github.com/pablopardoz/test_frogtek_2024.git`
+
+`cd test_frogtek_2024/`
+
+`python -m venv test_frogtek`
+
+`source test_frogtek/bin/activate`
+
+`pip install -r requierements.txt `
+
+`python -m ejercicio1 "Frogtek se fundó en 2020 y tiene 20 empleados"`
+
+`python -m ejercicio2 192.168.04.45`
+
+`python -m ejercicio3 data/cities.txt `
+
+```
+(test_frogtek) (base) pablo@walle:~/tech_tests/test_frogtek_2024$ cat data/cities.txt 
+Frogtek
+Huesca
+Jaca
+Guadalajara
+Alicante
+```
+```
+(test_frogtek) (base) pablo@walle:~/tech_tests/test_frogtek_2024$ python -m ejercicio3 data/cities.txt 
+['/home/pablo/tech_tests/test_frogtek_2024/ejercicio3.py', 'data/cities.txt']
+City found: Frogtek...
+Error en la ciudad Frogtek,0.0,0,0, 0, 0, 0
+City found: Huesca...
+Huesca,23.92,1.54,-0.4087, 42.1362, 07:57:42, 19:45:11
+City found: Jaca...
+Jaca,21.66,2.19,-0.5499, 42.569, 07:58:24, 19:45:37
+City found: Guadalajara...
+Guadalajara,24.19,2.1,-3.1667, 40.6333, 08:08:18, 19:56:40
+City found: Alicante...
+Alicante,25.62,3.6,-0.4815, 38.3452, 07:56:53, 19:46:35
+```
+```
+(test_frogtek) (base) pablo@walle:~/tech_tests/test_frogtek_2024$ cat data/cities.txt 
+Frogtek,0.0,0,0, 0, 0, 0
+Huesca,23.92,1.54,-0.4087, 42.1362, 07:57:42, 19:45:11
+Jaca,21.66,2.19,-0.5499, 42.569, 07:58:24, 19:45:37
+Guadalajara,24.19,2.1,-3.1667, 40.6333, 08:08:18, 19:56:40
+Alicante,25.62,3.6,-0.4815, 38.3452, 07:56:53, 19:46:35
+
+```

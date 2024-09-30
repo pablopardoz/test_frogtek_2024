@@ -8,7 +8,7 @@ Por ejemplo: "210.010.090.180", devolvería "210.10.90.180"
 
 import sys
 
-def remove_zeros(string_ip:str):
+def remove_zeros(string_ip: str) -> str:
     octets = string_ip.split('.')
     int_octets = []
     for octet in octets:
@@ -16,13 +16,13 @@ def remove_zeros(string_ip:str):
             octet=int(octet)
             int_octets.append(octet)
         except Exception as e:
-            print(e)
-            return False
+            print(e, type(e))
+            return ''
 
     ip_address = '.'.join(map(str, int_octets))
     return ip_address
 
-def validate_ip(ip):
+def validate_ip(ip: str) -> bool:
     octets_list = ip.split('.')
     if len(octets_list)!=4:
         return False
