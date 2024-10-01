@@ -43,7 +43,7 @@ def process_cities(file_path):
         city = City(name=city_to_retrieve,
                     country_iso2=DICT_CONFIG['country_iso2'])
         city_weather_data=get_city_data(city, api_key)
-        if city_weather_data:
+        if city_weather_data.valid_city:
             city_sun_data = get_sun_data(city_weather_data, api_key)
             cities_to_write.append(city_sun_data)
         else:

@@ -11,7 +11,8 @@ class City:
     lat:float = 0
     sunrise: datetime = None
     sunset: datetime = None
-    valid: bool = False
+    valid_city: bool = False # Valido que la ciudad exista
+    valid_name: bool = False # Campo para guardar si un nombre ha sido validado
 
 
     def __repr__(self):
