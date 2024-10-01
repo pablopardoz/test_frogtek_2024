@@ -11,7 +11,8 @@ class City:
     lat:float = 0
     sunrise: datetime = None
     sunset: datetime = None
-    valid_city: bool = False # Valido que la ciudad exista
+    has_weather_data: bool = False
+    has_sun_data: bool = False
     valid_name: bool = False # Campo para guardar si un nombre ha sido validado
 
 

@@ -37,16 +37,15 @@ def get_city_data(city: City, api_key: str) -> City:
         "appid": api_key
     }
     response_dict = retrieve_api_data(params)
-    print(response_dict)
     if response_dict.get('cod') == 200:
         city.lon = response_dict['coord']['lon']
         city.lat = response_dict['coord']['lat']
         city.temp_c = response_dict['main']['temp']
         city.wind_speed = response_dict['wind']['speed']
-        city.valid_city = True
+        city.has_weather_data = True
         return city
     else:
-        city.valid_city = False
+        city.has_weather_data = False
         return city
 
 def get_sun_data(city: City, api_key: str) -> City:
@@ -58,8 +57,8 @@ def get_sun_data(city: City, api_key: str) -> City:
     if response_dict.get('cod') == 200:
         city.sunset = datetime.fromtimestamp(response_dict['sys']['sunset'])
         city.sunrise = datetime.fromtimestamp(response_dict['sys']['sunrise'])
+        city.has_sun_data = True
         city.valid_name = validate_city(city.name, response_dict['name'])
-        print(city)
         return city
     else:
         return city

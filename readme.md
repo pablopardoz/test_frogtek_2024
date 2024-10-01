@@ -58,7 +58,7 @@ Para ejecutar todo el flujo de datos se ha intentado simplificar al máximo, ci�
 - Si es correcto, se rellenan los campos de coordenadas, temperatura y velocidad del viento. Si no es correcto, se queda todo a 0.
 - En caso de que haya sido correcto, se hace una segunda llamada pasandole las coordenadas.
 - Si también es correcto, se rellenan los datos de sunset y sunrise, y se valida el nombre.
-- Si no es correcto, no  se hace nada (no está especificado en el enunciado qué hacer)
+- Si esta segunda llamada no es correcta, se rellenan los datos anteriores (datos solares a 0)
 - Finalmente se sobreescribe el fichero original con los datos obtenidos.
 
 Notas:

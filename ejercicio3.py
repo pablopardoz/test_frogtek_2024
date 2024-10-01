@@ -13,6 +13,7 @@ y valida que el nombre de la ciudad devuelto por la petición usando coordenadas
 devuelve el mismo nombre de la ciudad del listado.
 
 Si en el punto 1), hay algún tipo de error, se rellenarán los valores con 0 y no se hará la petición 2).
+En caso de fallo en el punto 2, se rellenarán con ceros los datos del sol.
 
 Por ejemplo, si el listado inicial fuera de dos ciudades de nombre EXISTE y NOEXISTE, el fichero final quedaría así:
 EXISTE,23.21,2.54,-0.7499,40.560,06:45:12,21:45:12
@@ -43,19 +44,21 @@ def process_cities(file_path):
         city = City(name=city_to_retrieve,
                     country_iso2=DICT_CONFIG['country_iso2'])
         city_weather_data=get_city_data(city, api_key)
-        if city_weather_data.valid_city:
+        if city_weather_data.has_weather_data:
             city_sun_data = get_sun_data(city_weather_data, api_key)
-            cities_to_write.append(city_sun_data)
+            if city_sun_data.has_sun_data and city_sun_data.valid_name:
+                cities_to_write.append(city_sun_data)
+            else:
+                cities_to_write.append(city_weather_data)
         else:
             print("Error en la ciudad", city)
             cities_to_write.append(city)
-
     write_cities_to_file(file_path, cities_to_write)
 
 
 if __name__=="__main__":
     if len(sys.argv) != 2:
-        print("Error")
+        print("Error en los parametros")
     else:
         print(sys.argv)
         file_path = sys.argv[1]
