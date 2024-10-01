@@ -50,7 +50,7 @@ NOEXISTE,0,0,0,0
 ```
 
 - Se ha usado la clase `dataclass de Python para encapsular el objeto Cty y que sea más cómodo trabajar.
-- Se ha sacado tanto la API key como la url base a un `.env`, que se carga con la librería `dotenv`
+- Se ha sacado tanto la API key como la url base a un `.env`, que se carga con la librería `dotenv
 Para ejecutar todo el flujo de datos se ha intentado simplificar al máximo, ciñendome en el enunciado:
 - Se leen las ciudades de txt inicial.
 - Se itera entre las ciudades y se crea una primera versión del objeto solo con el nombre y el país, el resto a 0.
@@ -68,8 +68,13 @@ Notas:
 ## Tests
 Se ha creado una pequeña batería de tests unitarios con la librería de unittest. Hasta el momento todos pasan.
 
+Para ejecutarlos:
+`python -m tests
 
 ## Instalación
+Probado en Mac y Linux. Clonar rama, crear entorno virtual con las dependencias del requirements, y ejecutar el módulo que se quiera con los parámetros.
+
+
 `git clone https://github.com/pablopardoz/test_frogtek_2024.git`
 
 `cd test_frogtek_2024/`
@@ -85,6 +90,10 @@ Se ha creado una pequeña batería de tests unitarios con la librería de unitte
 `python -m ejercicio2 192.168.04.45`
 
 `python -m ejercicio3 data/cities.txt `
+
+Ejemplos de salida para el ejercicio 3: 
+
+Comprobar archivo vacío
 
 ```
 (test_frogtek) (base) pablo@walle:~/tech_tests/test_frogtek_2024$ cat data/cities.txt 
@@ -108,6 +117,8 @@ Guadalajara,24.19,2.1,-3.1667, 40.6333, 08:08:18, 19:56:40
 City found: Alicante...
 Alicante,25.62,3.6,-0.4815, 38.3452, 07:56:53, 19:46:35
 ```
+
+Comprobar archivo lleno
 ```
 (test_frogtek) (base) pablo@walle:~/tech_tests/test_frogtek_2024$ cat data/cities.txt 
 Frogtek,0.0,0,0, 0, 0, 0
