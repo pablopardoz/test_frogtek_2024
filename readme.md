@@ -3,7 +3,7 @@
 ## Consideraciones generales:
 - Se ha creado un repositorio público con 3 scripts, así como una clase City, un archivo de utils y uno de tests.
 - Se ha creado una carpeta data en la que están los datos del ejercicio 3
-- Se incluye el .env con la API keay al ser un ejercicio de ejemplo, pero lo ideal seria no subir este archivo a github.
+- Se incluye el .env con la API key. Al ser un ejercicio de ejemplo, pero lo ideal seria no subir este archivo a github.
 - Se ha creado un entorno virtual de Python
 
 ## Ejercicio 1:
@@ -13,6 +13,7 @@ Escribe un script que sume todos los números de una cadena de texto pasada por 
 La manera más simple y  directa que he visto para afrontarlo ha sido:
 - Dividir el texto por los espacios
 - Para cada elemento de la lista resultante, aplicarle la función de convertir palabra. Esta función símplemente convierte lo que entra a número, y devuelve un 0 si no es número.
+
 También controla un posible error de números con decimales, permitiendo que pueda leer tanto números con `.` decimal como con `,`
 
 Como observación añadir que seguramente fuera más escalable no comprobar toda la cadena de texto, sino buscar los números con expresiones regulares.
@@ -48,8 +49,8 @@ EXISTE,23.21,2.54,-0.7499,40.560,06:45:12,21:45:12
 NOEXISTE,0,0,0,0
 ```
 
-- Se ha usado la clase dataclass de Python para encapsular el objeto Cty y que sea más cómodo trabajar.
-- Se ha sacado tanto la API key como la url base a un .env, que se carga con la librería dotenv
+- Se ha usado la clase `dataclass de Python para encapsular el objeto Cty y que sea más cómodo trabajar.
+- Se ha sacado tanto la API key como la url base a un `.env`, que se carga con la librería `dotenv`
 Para ejecutar todo el flujo de datos se ha intentado simplificar al máximo, ciñendome en el enunciado:
 - Se leen las ciudades de txt inicial.
 - Se itera entre las ciudades y se crea una primera versión del objeto solo con el nombre y el país, el resto a 0.
